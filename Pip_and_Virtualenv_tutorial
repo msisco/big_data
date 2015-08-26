@@ -1,0 +1,83 @@
+Pip and Virtualenv tutorial.
+
+Instead of installing Anaconda which includes the packages needed fo this class I took a different route using two tools pip and virtualenv. The difference is being able to control the packages you want for a specified project instead of installing the packages globally. This protects against third party updates breaking your code when you upgrade to a new version.
+
+Step One: Install pip
+
+pip is a package manager that installs modules from the Python Package Index.
+To install pip open a terminal and enter the following command
+
+$ sudo easy_install pip
+
+Once you have pip you can install any package needed from the Python Package Index.
+But wait, if you do this than it will be installed globally for projects that use python, and there might be version conflicts in the future.
+
+Step Two: Install virtualenv
+
+virtualenv is a way to isolate a project and its packages from other projects and their packages.
+To install enter the following command
+
+$ sudo pip install virtualenv
+
+Now these two are installed globally which is the only global packages that you will need.
+Next we create a project for this class.
+
+Step Three: Making A Project
+
+Using virtualenv you can create a space for your project.
+Navigate to the folder that you keep your code. 
+Mine is in ~/code/big_data
+
+Next enter the following command:
+
+$ virtualenv big_data_env
+
+This creates a folder valled big_data_env and makes three folders inside bin, include, and lib
+bin is where the python binary is automatically installed for you as well as pip.
+
+Next is installing the required packages for this class.
+
+Step Four: Installing Packages
+
+To install the packages needed for this class I looked in the book and saw his recommended install was EPDfree,
+which included the following packages:
+
+NumPy, SciPy, matplotlib, IPython, notebook, ipywidgets
+
+These are all available in the Python Package Index so we are good to go to install them with pip
+To install them to our specific big_data_env navigate to our code folder just above the big-data_env:
+
+Install all of the packages but instead of using pip we are going to use big_data_env/bin/pip
+
+$ big_data_env/bin/pip install numpy
+$ big_data_env/bin/pip install scipy
+$ big_data_env/bin/pip install matplotlib
+$ big_data_env/bin/pip install ipython
+$ big_data_env/bin/pip install notebook
+$ big_data_env/bin/pip install ipywidgets
+
+Now we have all the packages that the book recommends and we can use notebook just as if we installed anaconda.
+But first we have to choose to use this environment
+
+Step Five: Using the Environment
+
+Now that we have all the packages in the environment that we set up lets point our terminal to use this environments packages specifically.
+To do this we enter the following commands
+
+$ source big_data_env/bin/activate
+
+Now you will see the terminal look like this 
+(big_data_env)$
+
+This indicates that any python commands or  python terminals opened will reference the packages in big_data_env.
+
+So lets continue and try it out.
+While our environemnt is set to big_data_env type:
+(big_data_env)$ ipython notebook
+
+The notebook server will start just like the other steps in the homework describe and you can use it like normal.
+
+Finally, everytime you open the terminal you will have to source big_data_env/bin/activate to use that environment and its packages.
+
+
+Thanks for following this tutorial, you now know how to set up and control packages in a way that protect against backward incompatability.
